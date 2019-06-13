@@ -15,6 +15,13 @@
     "js"
   ],
   "author": "vinli",
+  "email": "yes.heng@icloud.com",
+  "url": "https://cnblackj.github.io/",
+  "homepage": "https://github.com/CNBlackJ/huilianyiWebApi",
+  "bugs": {
+    "url": "https://github.com/CNBlackJ/huilianyiWebApi/issues",
+    "email": "yes.heng@icloud.com"
+  },
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.0"

@@ -71,6 +71,7 @@ class Huilianyi {
   /**
    * @param {*} options
    * @param {*} authToken
+   * 借款单明细增量查询
    * options: https://opendocs.huilianyi.com/implement/business-data/loan-application/query-loan-application.html
    * status:
    * 1001//初始
