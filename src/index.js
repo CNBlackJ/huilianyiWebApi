@@ -35,6 +35,9 @@ class Huilianyi {
   }
 
   /**
+   * @param {*} options
+   * @param {*} authToken
+   * 报销单明细增量查询
    * options: https://opendocs.huilianyi.com/implement/business-data/expense-report/query-expense-report.html
    * status:
    *  1001//初始
@@ -66,7 +69,9 @@ class Huilianyi {
   }
 
   /**
-   * options: https://opendocs.huilianyi.com/implement/business-data/expense-report/query-expense-report.html
+   * @param {*} options
+   * @param {*} authToken
+   * options: https://opendocs.huilianyi.com/implement/business-data/loan-application/query-loan-application.html
    * status:
    * 1001//初始
    * 1002//提交审批
@@ -96,6 +101,18 @@ class Huilianyi {
     })
   }
 
+  /**
+   * @param {*} options
+   * @param {*} authToken
+   * 报销单报表
+   * https://opendocs.huilianyi.com/implement/report-data/ReimbursementReport.html
+   * 1002
+   * 1003
+   * 1004
+   * 1005
+   * 1007
+   * 1008
+   */
   async listReimbursement (options, authToken) {
     const path = '/report/api/open/report/searchReimbursement'
     const payload = {
@@ -114,6 +131,18 @@ class Huilianyi {
     })
   }
 
+  /**
+   * @param {*} options
+   * @param {*} authToken
+   * 费用明细报表
+   * https://opendocs.huilianyi.com/implement/report-data/ExpenseDetailsReport.html
+   * 1002
+   * 1003
+   * 1004
+   * 1005
+   * 1007
+   * 1008
+   */
   async listExpenseDetails (options, authToken) {
     const path = '/report/api/open/report/searchExpenseDetails'
     const payload = {
@@ -132,6 +161,15 @@ class Huilianyi {
     })
   }
 
+  /**
+   * @param {*} options
+   * @param {*} authToken
+   * 差旅申请报表
+   * https://opendocs.huilianyi.com/implement/report-data/TrvappReport.html
+   * 1002  审批中
+   * 1003  审批通过
+   * 1009  已停用
+   */
   async listTrvappReport (options, authToken) {
     const path = '/report/api/open/report/searchTrvappReport'
     const payload = {
@@ -150,8 +188,49 @@ class Huilianyi {
     })
   }
 
+  /**
+   * @param {*} options
+   * @param {*} authToken
+   * 差旅申请报表
+   * https://opendocs.huilianyi.com/implement/report-data/ExpappReport.html
+   * 1002  审批中
+   * 1003  审批通过
+   * 1009  已停用
+   */
   async listExpappReport (options, authToken) {
     const path = '/report/api/open/report/searchExpappReport'
+    const payload = {
+      status: '1002',
+      language: 'zh_cn',
+      startDate: moment().add(3, 'M').format('YYYY-MM-DD'),
+      endDate: moment().format('YYYY-MM-DD'),
+      page: '1',
+      size: '10',
+      ...options
+    }
+    return this.request.post(path, payload, {
+      headers: {
+        Authorization: `Bearer ${authToken}`
+      }
+    })
+  }
+
+  /**
+   * @param {*} options
+   * @param {*} authToken
+   * 差旅申请报表
+   * https://opendocs.huilianyi.com/implement/report-data/LoanappReport.html
+   * 1002  审批中
+   * 1003  审批通过
+   * 1004
+   * 1005
+   * 1006
+   * 1007
+   * 1008
+   * 1009  已停用
+   */
+  async listLoanappReport (options, authToken) {
+    const path = '/report/api/open/report/searchLoanappReport'
     const payload = {
       status: '1002',
       language: 'zh_cn',
