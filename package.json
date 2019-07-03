@@ -1,6 +1,6 @@
 {
   "name": "hlyapi",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "汇联易 webapi sdk",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.0"
+    "axios": "^0.19.0",
+    "form-data": "^2.4.0"
   }
 }
